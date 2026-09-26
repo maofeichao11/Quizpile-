@@ -6,6 +6,7 @@
 ![Tests](https://img.shields.io/badge/tests-44%20API%20%2B%2012%20UI-brightgreen)
 
 **本项目100%纯正AI开发=v=**
+
 **Quizpile（题堆）** —— 一个轻量的在线题库 / 刷题 / 组卷工具（类似考试宝的核心功能），**PHP + MySQL** 存储。
 
 > 名字含义：Quiz（测验）+ Pile（堆），把题目像「题堆 / 柴堆」一样越积越多、随时取出来练，正合刷题和题库的场景，也暗合「题海战术」。
