@@ -1,0 +1,32 @@
+# Quizpile - Nginx 站点配置片段（宝塔面板用）
+# 使用方式：宝塔 → 网站 → 设置 → 配置文件，把下面内容插入到 server { } 内（放在 location / 之前）
+
+# 1) 禁止访问敏感目录（lib 里有数据库账号密码）
+location ^~ /lib/     { deny all; }
+location ^~ /tools/   { deny all; }
+location ^~ /tests/   { deny all; }
+
+# 2) 隐藏文件（.git / .env 等）：宝塔默认配置已包含这类规则，一般不用再加。
+#    注意：不要写 `location ~ /\. { deny all; }`，它会把 webp/svg/ico 等静态资源也拦掉。
+
+# 3) 上传目录：禁止执行脚本，禁止列目录
+location ^~ /uploads/ {
+    location ~ \.(php|php3|php4|php5|php7|pht|phtml|pl|py|cgi|sh)$ { deny all; }
+    autoindex off;
+}
+
+# 4) 静态资源缓存
+location ~* \.(css|js|png|jpg|jpeg|gif|webp|ico|svg)$ {
+    expires 7d;
+    access_log off;
+}
+
+# 5) 其余规则（PHP 解析）保持宝塔默认生成的内容即可，例如：
+# location ~ [^/]\.php(/|$) {
+#     fastcgi_pass unix:/tmp/php-cgi-74.sock;   # 面板生成的别改
+#     fastcgi_index index.php;
+#     include fastcgi.conf;
+#     include pathinfo.conf;
+# }
+
+# ----- 可选：部署在子目录时（如 http://域名/quizvault/），把上面的 /lib/ 改成 /quizvault/lib/ -----
