@@ -380,16 +380,10 @@ node tests/ui_render_check.js
   换 Apache/Nginx 部署、或把文档拆小一些再解析（内置 PHP 服务器是单线程，最容易撞到）。
 
 <a id="opensource"></a>
-## 13. 开源说明
 
-- **不要提交 `lib/config.php`**：里面是数据库账号密码，已被 `.gitignore` 忽略。
-  若你要提交自己的改动，先 `git status` 确认它没有被 `git add`。
-- **不要提交 `uploads/` 内容**：里面是题目图片和 AI 解析临时文本（同样已忽略）。
-- **`phpMyAdmin*/` 不入库**：那是第三方程序，需要的话自行下载放到站点目录，它已被忽略。
-- AI 的 API Key 由**每个用户自己在「设置」里填写**，只存在各自账号下，不会写进代码或仓库。
 
 <a id="license"></a>
-## 14. 许可证
+## 13. 许可证
 
 本项目以 **MIT License** 开源，见 [LICENSE](LICENSE)。
 如果原作者希望换用其他许可证（如 Apache-2.0、GPL-3.0），把 `LICENSE` 文件替换掉即可。
